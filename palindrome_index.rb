@@ -1,4 +1,5 @@
 def palindromeIndex(s)
+  s = s.downcase
   left_index = 0
   right_index = s.size - 1
 
