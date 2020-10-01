@@ -7,4 +7,4 @@ def palindrome(string)
   end
 end
 
-puts palindrome('raceca')
+puts palindrome('racecar')
