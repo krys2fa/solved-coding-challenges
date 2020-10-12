@@ -1,5 +1,5 @@
 def move(starting, goal)
-  pegs = [1, 2, 3]
+  # pegs = [1, 2, 3]
   result = ''
   if starting == 1 && goal == 3
     intermediate = 2
