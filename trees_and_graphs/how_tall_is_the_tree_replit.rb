@@ -6,8 +6,8 @@ end
 def tree_height(array_tree, index)
   return 0 if array_tree[index].nil? || array_tree[index] == 0
 
-  left_child_height = tree_height(array_tree, 2*i + 1)
-  right_child_height = tree_height(array_tree, 2*i + 2)
+  left_child_height = tree_height(array_tree, 2*index + 1)
+  right_child_height = tree_height(array_tree, 2*index + 2)
 
   height = 1 + [left_child_height, right_child_height].max
 end
