@@ -54,5 +54,53 @@ puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
 puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
 # => true
 
-# balanced_tree?([1, 2, 3, 4, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 7])
+
+
+# Model Solution
+
+class Node
+  attr_reader :data
+  attr_accessor :left, :right
+
+  def initialize(data)
+    @data = data
+  end
+end
+
+def array_to_tree(array, i)
+  return nil if i >= array.length || array[i] == 0
+
+  node = Node.new(array[i])
+  node.left = array_to_tree(array, 2*i+1)
+  node.right = array_to_tree(array, 2*i+2)
+
+  node
+end
+
+def recursive_tree_height(tree)
+  return 0 if tree.nil?
+  return 1 if tree.left.nil? && tree.right.nil?
+
+  [recursive_tree_height(tree.left), recursive_tree_height(tree.right)].max + 1
+end
+
+def balanced_tree?(array_tree)
+  # write your code here
+  tree = array_to_tree(array_tree, 0)
+
+  balanced_tree_recursive?(tree)
+end
+
+def balanced_tree_recursive?(tree)
+  return true if tree.nil? || (tree.left.nil? && tree.right.nil?)
+
+  balanced_tree_recursive?(tree.left) &&
+  balanced_tree_recursive?(tree.right) &&
+  (recursive_tree_height(tree.left) - recursive_tree_height(tree.right)).abs <= 1
+end
+
+puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
 # => false
+
+puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
+# => true
