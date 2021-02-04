@@ -23,4 +23,6 @@ def is_anagram(s, t)
 
   return true
 
+  # time complexity is O(n)
+
 end
