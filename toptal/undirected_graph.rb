@@ -3,6 +3,7 @@ def undirected_graph(n, a, b)
   a.each_with_index do |el, index|
 		arr << [el, b[index]]
 	end
+	p arr
 	clean_arr = arr.flatten.sort.uniq
 
 	p clean_arr
