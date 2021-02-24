@@ -13,3 +13,19 @@ def divisibleSumPairs(n, k, ar)
   return count
 
 end
+[1,2,3]
+ele1 = 1
+index = 0
+next_index = 1
+ele2 = 2
+
+next_index = 2
+ele2 = 3
+
+ele1 = 2
+index = 1
+next_index = 2
+ele2 = 3
+
+next_index = 2
+ele2 = 3
