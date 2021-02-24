@@ -5,24 +5,24 @@ def undirected_graph(n, a, b)
 	end
 	p edge_list
 
-	num = edge_list.flatten.uniq.count
-	arr = [0, 0, 0, 0]
-	adjacency_matrix = Array.new(num) { Array.new(num, arr) }
+	# num = edge_list.flatten.uniq.count
+	# arr = [0, 0, 0, 0]
+	# adjacency_matrix = Array.new(num) { Array.new(num, arr) }
 
-	edge_list.each_with_index do |edge, index|
+	# edge_list.each_with_index do |edge, index|
 
-		# p edge
-		# p index
-		# p adjacency_matrix
-		# p adjacency_matrix[index]
-		# p adjacency_matrix[index][edge[0]-1]
-		adjacency_matrix[index][edge[0]-1] = 1
-		# p adjacency_matrix[index][edge[0]-1]
-		# # p adjacency_matrix[index]
-		# p adjacency_matrix
-	end
+	# 	# p edge
+	# 	# p index
+	# 	# p adjacency_matrix
+	# 	# p adjacency_matrix[index]
+	# 	# p adjacency_matrix[index][edge[0]-1]
+	# 	# adjacency_matrix[index][edge[0]-1] = 1
+	# 	# p adjacency_matrix[index][edge[0]-1]
+	# 	# # p adjacency_matrix[index]
+	# 	# p adjacency_matrix
+	# end
 
-	p adjacency_matrix
+	# p adjacency_matrix
 	# clean_arr = arr.flatten.sort.uniq
 
 	# p clean_arr
