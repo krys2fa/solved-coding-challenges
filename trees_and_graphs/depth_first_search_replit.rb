@@ -12,6 +12,13 @@ def depth_first_search(graph)
 
     visited += not_visited
     stack += not_visited.reverse
+
+    p "head: #{head}"
+    p "visited: #{visited}"
+    p "result: #{result}"
+    p "not_visited: #{not_visited}"
+    p "stack: #{stack}"
+    p "============="
   end
 
   result

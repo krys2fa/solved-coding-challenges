@@ -1,3 +1,28 @@
+
+
+# # # true
+# n = 4
+# a = [1, 2, 4, 4, 3]
+# b = [2, 3, 1, 3, 1]
+
+
+# # # false
+# n = 4
+# a = [1, 2, 1, 3]
+# b = [2, 4, 3, 4]
+
+# # false
+# n = 6
+# a = [2, 4, 5, 3]
+# b = [3, 5, 6, 4]
+
+# # # true
+# n = 3
+# a = [1, 3]
+# b = [2, 2]
+
+
+
 def undirected_graph(n, a, b)
   edge_list = []
   a.each_with_index do |el, index|
@@ -5,79 +30,73 @@ def undirected_graph(n, a, b)
 	end
 	p edge_list
 
-	# num = edge_list.flatten.uniq.count
-	# arr = [0, 0, 0, 0]
-	# adjacency_matrix = Array.new(num) { Array.new(num, arr) }
+	start = 1
+	terminal = start + 1
 
-	# edge_list.each_with_index do |edge, index|
+	rec_search(edge_list, start, terminal, n)
 
-	# 	# p edge
-	# 	# p index
-	# 	# p adjacency_matrix
-	# 	# p adjacency_matrix[index]
-	# 	# p adjacency_matrix[index][edge[0]-1]
-	# 	# adjacency_matrix[index][edge[0]-1] = 1
-	# 	# p adjacency_matrix[index][edge[0]-1]
-	# 	# # p adjacency_matrix[index]
-	# 	# p adjacency_matrix
-	# end
-
-	# p adjacency_matrix
-	# clean_arr = arr.flatten.sort.uniq
-
-	# p clean_arr
-	# last_num = clean_arr[0]
-	# clean_arr[1, clean_arr.length].each do |el|
-	#   p el
-	#   p false if last_num + 1 != el
-	# 	last_num = el
-	# end
-
-	# if clean_arr[0] != 1 || clean_arr[clean_arr.length - 1] != n
-	#   p false
-	# else
-	# 	p true
-	# end
-
-  # puts dfs(adj_matrix, source, terminal)
 end
 
-def dfs(adj_matrix, source, terminal)
-  node_stack = [source]
+def rec_search(edge_list, start, terminal, n)
 
-  loop do
-    current_node = node_stack.pop
-    return false if current_node == nil
-    return true if current_node == terminal
-
-    children = (0..adj_matrix.length-1).to_a.select do |i|
-      adj_matrix[current_node][i] == 1
-    end
-
-    node_stack += children
+  if ( !(edge_list.include?([start, terminal]) || edge_list.include?([terminal, start])) || terminal > n)
+	  puts false
+    return false
   end
+
+	if terminal == n
+	  puts true
+		return
+	end
+  rec_search(edge_list, start + 1, terminal + 1, n)
 end
-
-# # true
-# n = 4
-# a = [1, 2, 4, 4, 3]
-# b = [2, 3, 1, 3, 1]
-
-
-# # false
-n = 4
-a = [1, 2, 1, 3]
-b = [2, 4, 3, 4]
-
-# false
-# n = 6
-# a = [2, 4, 5, 3]
-# b = [3, 5, 6, 4]
-
-# # true
-# n = 3
-# a = [1, 3]
-# b = [2, 2]
 
 
 undirected_graph(n, a, b)
+
+
+function segment(x, space) {
+    const end = space.length - x
+    let lastMin = Infinity
+    for (let i=0; i<x; ++i) {
+        lastMin = Math.min(lastMin, space[i])
+    }
+    let maxMin = lastMin
+    for (let i=1; i<end; ++i) {
+        if (space[i - 1] != lastMin) {
+            continue
+        }
+        lastMin = Infinity
+        for (let j=0; j<x; ++j) {
+            lastMin = Math.lastMin(lastMin, space[i + j])
+        }
+        maxMin = Math.max(lastMin, maxMin)
+    }
+    return maxMin
+}
+
+function segment(x, space) {
+    let segments = [];
+
+    for(let i = 0; i < space.length; i++) {
+        if (x > space.length) {
+            break;
+        }
+
+        segments.push(space.slice(i, x++));
+    }
+
+    let minimums = segments.map(segment => Math.min(...segment));
+
+    return Math.max(...minimums);
+}
+
+
+def ParkingDilemma(self, cars, k):
+        # write your code here
+        cars.sort()
+        n = len(cars)
+        res = float('inf')
+        for i in range(n-k+1):
+            res = min(res, cars[i+k-1] - cars[i])
+        return res+1
